@@ -58,10 +58,10 @@ function printMovies(userKeyWords){
           console.log(originalLanguage);
           var vote = movie.vote_average;
           console.log(vote);
-          var stella = fromVoteToStar(vote);
+          var stars = fromVoteToStar(vote);
 
           // completo il template handlebars
-          var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: originalLanguage};
+          var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: originalLanguage, vote: stars};
           console.log(context);
           var html = template(context);
           // appendo il template all'html
@@ -76,16 +76,16 @@ function printMovies(userKeyWords){
 }
     function fromVoteToStar(votazione){
       // voto decimale
-      var votoArrotondato = Math.round(votazione);
-      console.log(votoArrotondato);
-      // da voto decimale a base 5 arrotondandolo in caso di eccesso
-      var votoBaseCinque = votoArrotondato / 2;
-      console.log(votoBaseCinque);
-      var votoBaseCinqueArrotondato = Math.round(votoBaseCinque);
-      console.log(votoBaseCinqueArrotondato);
+      votazione = Math.round(votazione/2);
+      console.log(votazione);
+      var star = '';
       // con un ciclo for assegno le stelle
-      for (var i = 0; i < votoBaseCinqueArrotondato; i++) {
-        votoBaseCinqueArrotondato[i] = '<i class="fas fa-star"></i>';
-        $('#box-office').append({vote: vote});
+      for (var i = 1; i <= 5; i++) {
+        if( i <= votazione ){
+          star += "<i class=fas fa-star></i>";
+        } else{
+          star += "<i class=far fa-star></i>";
+        }
       }
+      return star;
     }
