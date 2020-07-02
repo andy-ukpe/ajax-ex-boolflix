@@ -23,7 +23,7 @@ function startSearching(){
       $('.container').html('');
       console.log(query);
       printMovies(query);
-    }else {
+      }else {
       alert('inserire dei caratteri alfanumerici')
     }
 
@@ -58,9 +58,10 @@ function printMovies(userKeyWords){
           console.log(originalLanguage);
           var vote = movie.vote_average;
           console.log(vote);
+          var stella = fromVoteToStar(vote);
 
           // completo il template handlebars
-          var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: originalLanguage, vote: vote};
+          var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: originalLanguage};
           console.log(context);
           var html = template(context);
           // appendo il template all'html
@@ -73,3 +74,18 @@ function printMovies(userKeyWords){
       }
     });
 }
+    function fromVoteToStar(votazione){
+      // voto decimale
+      var votoArrotondato = Math.round(votazione);
+      console.log(votoArrotondato);
+      // da voto decimale a base 5 arrotondandolo in caso di eccesso
+      var votoBaseCinque = votoArrotondato / 2;
+      console.log(votoBaseCinque);
+      var votoBaseCinqueArrotondato = Math.round(votoBaseCinque);
+      console.log(votoBaseCinqueArrotondato);
+      // con un ciclo for assegno le stelle
+      for (var i = 0; i < votoBaseCinqueArrotondato; i++) {
+        votoBaseCinqueArrotondato[i] = '<i class="fas fa-star"></i>';
+        $('#box-office').append({vote: vote});
+      }
+    }
