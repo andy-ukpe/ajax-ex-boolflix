@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BoolFlix- Andy Ukpe</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <input id="my-input"type="text" placeholder="cerca un titolo">
+    <button type="button" name="button">cerca</button>
+
+    <div class="container">
+
+    </div>
+    <!-- handlebars -->
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div id="box-office">
+        <h3><span>titolo originale: </span>{{originalTitle}}</h3>
+        <h3><span>titolo: </span>{{italianTitle}}</h3>
+        <p>lingua: {{language}}</p>
+        <p>voto: {{vote}}/10</p>
+      </div>
+    </script>
+  <script type="text/javascript" src="style.js"></script>
+  </body>
+</html>
