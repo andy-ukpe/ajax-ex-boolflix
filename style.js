@@ -65,7 +65,7 @@ function printMovies(userKeyWords){
           var flags = fromLangToFlag(originalLanguage);
           var poster = printPoster(posterPath);
           // completo il template handlebars
-          var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: flags, vote: stars};
+          var context = { originalTitle: originalTitle, italianTitle: italianTitle, poster: poster, language: flags, vote: stars};
           console.log(context);
           var html = template(context);
           // appendo il template all'html
@@ -108,8 +108,10 @@ function printSeries(userKeyWords){
           console.log(originalLanguage);
           var vote = serie.vote_average;
           console.log(vote);
+          var posterSeriesPath = serie.poster_path;
           var stars = fromVoteToStar(vote);
           var flags = fromLangToFlag(originalLanguage);
+          var poster = printPoster(posterSeriesPath);
           // completo il template handlebars
           var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: flags, vote: stars};
           console.log(context);
@@ -128,18 +130,9 @@ function printSeries(userKeyWords){
   function printPoster(codePoster) {
     var url = 'https://image.tmdb.org/t/p/w342';
     var poster_path = codePoster;
-    $.ajax(
-      {
-        url: url,
-        method: "GET",
-        data:{
-           poster_path: poster_path,
-        },
-        success: function(data){
-
-        },
-      }
-    )
+    var src = url + poster_path;
+    var risultato = '<img src="' + src + '" class="poster" alt="poster">';
+    return risultato;
   }
     function fromVoteToStar(votazione){
       // voto decimale
