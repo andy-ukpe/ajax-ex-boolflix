@@ -20,7 +20,7 @@ $(document).ready(function() {
 function startSearching(){
   var query = $('#my-input').val();
     if(query != ' '){
-      $('.container').html('');
+      $('.container-flex').html('');
       console.log(query);
       printMovies(query);
       printSeries(query);
@@ -61,15 +61,17 @@ function printMovies(userKeyWords){
           console.log(vote);
           var posterPath = movie.poster_path;
           console.log(vote);
+          var overview = movie.overview;
+          console.log(vote);
           var stars = fromVoteToStar(vote);
           var flags = fromLangToFlag(originalLanguage);
           var poster = printPoster(posterPath);
           // completo il template handlebars
-          var context = { originalTitle: originalTitle, italianTitle: italianTitle, poster: poster, language: flags, vote: stars};
+          var context = { originalTitle: originalTitle, italianTitle: italianTitle, poster: poster, language: flags, vote: stars, overview: overview};
           console.log(context);
           var html = template(context);
           // appendo il template all'html
-          $('.container').append(html);
+          $('.container-flex').append(html);
         }
 
       },
@@ -108,16 +110,18 @@ function printSeries(userKeyWords){
           console.log(originalLanguage);
           var vote = serie.vote_average;
           console.log(vote);
+          var overview = serie.overview;
+          console.log(vote);
           var posterSeriesPath = serie.poster_path;
           var stars = fromVoteToStar(vote);
           var flags = fromLangToFlag(originalLanguage);
           var poster = printPoster(posterSeriesPath);
           // completo il template handlebars
-          var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: flags, vote: stars};
+          var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: flags, vote: stars, overview: overview};
           console.log(context);
           var html = template(context);
           // appendo il template all'html
-          $('.container').append(html);
+          $('.container-flex').append(html);
         }
 
       },

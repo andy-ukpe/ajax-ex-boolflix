@@ -9,22 +9,37 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <input id="my-input"type="text" placeholder="cerca un titolo">
-    <button type="button" name="button">cerca</button>
+    <header>
+      <div class="container">
+        <div class="logo">
+          BoolFlix
+        </div>
+        <div class="research">
+          <input id="my-input"type="text" placeholder="cerca un titolo">
+          <button type="button" name="button">cerca</button>
+        </div>
+      </div>
+
+
+    </header>
 
     <div class="container">
-
+      <div class="container-flex">
+      </div>
     </div>
+
     <!-- handlebars -->
     <script id="entry-template" type="text/x-handlebars-template">
       <div id="box-office">
-        <h3><span>titolo originale: </span>{{originalTitle}}</h3>
-        <ul>
-          <li><span>titolo: </span>{{italianTitle}}</li>
-          <li>{{{poster}}}</li>
-          <li>lingua: {{{language}}}</li>
-          <li>voto: {{{vote}}}</li>
-        </ul>
+
+           <span>{{{poster}}}</span>
+           <ul>
+             <li><span><b>titolo originale: </b></span>{{originalTitle}}</li>
+             <li><span><b>titolo: </b></span>{{italianTitle}}</li>
+             <li>lingua: {{{language}}}</li>
+             <li><b>voto: </b>{{{vote}}}</li>
+             <li><b>overview: {{overview}}</b></li>
+           </ul>
 
       </div>
     </script>
