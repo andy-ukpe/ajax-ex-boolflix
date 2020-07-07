@@ -13,7 +13,7 @@ body{
 header{
   background-color: black;
 }
-.container{
+header .container{
   width: 80%;
   height: 50px;
   margin: auto;
@@ -29,6 +29,11 @@ header .container > *{
 }
 .container > .logo{
   color: red;
+}
+body.container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
 }
 .container-flex{
   width: 100%;
@@ -46,28 +51,35 @@ i{
 }
 /* box-offices */
 #box-office{
-  flex-basis: calc( 100% / 3 );
-  padding: 30px;
+  flex-basis: calc( 100% / 4 );
+  padding: 10px 15px;
   position: relative;
 }
 
 #box-office img{
   width: 100%;
+  height: 360px;
+  border: 2px solid white;
 }
 #box-office ul{
+  width: 91%;
+  height: 360px;
   position: absolute;
-  top: 70px;
-  left: 70px;
+  top: 10px;
+  left: 15px;
+  padding: 20px 25px;
   list-style-type: none;
   display: inline-block;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 10px;
+  font-weight: 200;
   color: white;
   display: none;
 }
 #box-office:hover ul{
   display: block;
 }
-#box-office:hover{
-  background-color: black; opacity: 0.75;
+#box-office:hover ul{
+  background-color: rgba(0,0,0,.8);
+  z-index: 2;
 }

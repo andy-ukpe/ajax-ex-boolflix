@@ -113,9 +113,11 @@ function printSeries(userKeyWords){
           var overview = serie.overview;
           console.log(vote);
           var posterSeriesPath = serie.poster_path;
+          var posterBackdropPath = serie.backdrop_path;
           var stars = fromVoteToStar(vote);
           var flags = fromLangToFlag(originalLanguage);
           var poster = printPoster(posterSeriesPath);
+          var poster = printPoster(posterBackdropPath);
           // completo il template handlebars
           var context = { originalTitle: originalTitle, italianTitle: italianTitle, language: flags, vote: stars, overview: overview};
           console.log(context);
@@ -132,10 +134,16 @@ function printSeries(userKeyWords){
 }
   // stampa immagine poster
   function printPoster(codePoster) {
-    var url = 'https://image.tmdb.org/t/p/w342';
-    var poster_path = codePoster;
-    var src = url + poster_path;
-    var risultato = '<img src="' + src + '" class="poster" alt="poster">';
+    var risultato;
+    if(codePoster){
+      var url = 'https://image.tmdb.org/t/p/w342';
+      var poster_path = codePoster;
+      var src = url + poster_path;
+      risultato = '<img src="' + src + '" class="poster" alt="poster">';
+    } else{
+        risultato = '<img src="img/default-poster.jpg" class="poster" alt="default-poster">';
+    }
+
     return risultato;
   }
     function fromVoteToStar(votazione){
